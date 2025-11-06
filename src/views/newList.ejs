@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/newList.css">
+    <title>AEY</title>
+</head>
+
+<body>
+    <%- include('partials/header') %>
+
+        <section class="tasks">
+            <h2>Nova Lista de Tarefas</h2>
+
+            <form action="/admin/createList" method="post" class="form-create-list">
+                <input type="text" name="listName" id="listName">
+                <button type="submit" class="create-list-btn">Criar</button>
+            </form>
+
+            <a href="/allTasks" class="back-btn">Voltar</a>
+        </section>
+
+        <%- include('partials/footer') %>
+
+</body>
+
+</html>

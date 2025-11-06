@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/tasksFromList.css">
+    <title>AEY</title>
+</head>
+
+<body>
+    <%-include('partials/header')%>
+
+        <section class="tasks-section">
+            <h2 class="list-title">
+                <%=list.title%>
+            </h2>
+            <form action="/admin/createNewTask/<%=list.id%>" method="post" class="form-newTask">
+                <input type="text" name="taskTitle" id="taskTitle" placeholder="Adicionar Nova Tarefa...">
+                <button type="submit" class="add-task-btn">Adicionar</button>
+            </form>
+            <ul class="tasks-ul">
+                <% list.tasks.forEach(task=> { %>
+                    <li class="<%=task.completa ? 'verde' : ''%>">
+                        <form action="/checkTask/<%=task.id%>" method="post" >
+                            <input type="hidden" name="listId" value="<%=list.id%>">
+                            <h3>
+                                <%= task.title %>
+                            </h3>
+                            <button class="task-check" type='submit' <%=task.completa ? 'hidden' : ''
+                                %>>Completar</button>
+                        </form>
+                    </li>
+                    <% }); %>
+            </ul>
+
+            <a href="/allTasks" class="back-btn">Voltar para todas as tarefas</a>
+        </section>
+
+        <%- include('partials/footer') %>
+</body>
+
+</html>

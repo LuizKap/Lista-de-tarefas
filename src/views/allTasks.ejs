@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="allTasks.css">
+    <title>AEY</title>
+</head>
+
+<body>
+    <%- include('partials/header') %>
+
+        <section class="lists-section">
+            <h2>Listas de Tarefas</h2>
+            <ul class="list-ul">
+                <% taskLists.forEach(list=> { %>
+                    <li class="list-li">
+                        <form action="/admin/deleteTask/<%=list.id%>" method="post">
+                            <a href="/tasksFromList/<%=list.id%>">
+                                <%= list.title %>
+                            </a>
+                            <button type="submit" class="delete-btn">Excluir</button>
+                        </form>
+                    </li>
+                    <% }); %>
+            </ul>
+            <a href="/newList" class="newList">Nova Lista de Tarefas</a>
+
+        </section>
+
+        <%- include('partials/footer') %>
+
+</body>
+
+</html>
