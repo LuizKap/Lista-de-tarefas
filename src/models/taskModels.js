@@ -16,7 +16,7 @@ const tasksModel = {
     },
 
     getOneList: (id) => {
-        console.log(tasksList)
+        
         return tasksList.find(list => id.toString() === list.id.toString())
     },
 

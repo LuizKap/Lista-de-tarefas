@@ -38,7 +38,7 @@ const taskController = {
         const id = req.params.id
 
         const list = tasksModel.getOneList(id)
-        console.log(list)
+        
         res.render('tasksFromList', { list })
     },
 
