@@ -38,15 +38,30 @@ const taskController = {
         const id = req.params.id
 
         const list = tasksModel.getOneList(id)
-        
+
         res.render('tasksFromList', { list })
     },
 
     createNewTask: (req, res) => {
         const list_id = req.params.id
         const { taskTitle } = req.body
+
+        console.log('Recebendo nova tarefa...')
+        console.log('ID da lista recebido:', list_id)
+        console.log('Título da tarefa:', taskTitle)
+
+        const list = tasksModel.getOneList(list_id)
+
+        if (!list) {
+            console.error('ERRO: Nenhuma lista encontrada com esse ID!')
+            return res.status(404).send('Lista não encontrada.')
+        }
+
+        console.log('Lista encontrada:', list.title)
+
         tasksModel.newTask(list_id, taskTitle)
 
+        console.log('Tarefa adicionada com sucesso à lista', list.title)
         res.redirect(`/tasksFromList/${list_id}`)
     },
 
