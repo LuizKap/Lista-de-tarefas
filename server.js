@@ -4,8 +4,8 @@ const app = express()
 const router = require('./src/routes')
 
 app.set('view engine', 'ejs')
-app.set('views', path.join(__dirname, 'views'))
-app.use(express.static('public'))
+app.set('views', path.join(__dirname, 'src', 'views'))
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({ extended: true }))
 
 app.use(router)
